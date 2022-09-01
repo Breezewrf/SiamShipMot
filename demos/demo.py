@@ -1,17 +1,17 @@
 import logging
 import argparse
 import os
-import sys
-sys.path.append(r'/home/shared/wrf/siam-mot')
+
 from demos.demo_inference import DemoInference
 from demos.utils.vis_generator import VisGenerator
 from demos.utils.vis_writer import VisWriter
 from demos.video_iterator import build_video_iterator
-
+# python demo.py --demo-video MVI_1479_VIS.avi
 parser = argparse.ArgumentParser(" SiamMOT Inference Demo")
-parser.add_argument('--demo-video', metavar="FILE", type=str,
-                    required=True)
-parser.add_argument('--track-class', type=str, choices=('person', 'person_vehicle'),
+parser.add_argument('--demo-video', default="/home/breeze/Desktop/siam-mot-main/smd_dataset/MVI_1584_VIS.avi",
+                    metavar="FILE", type=str,
+                    )
+parser.add_argument('--track-class', type=str, choices=('ship', 'person_vehicle'),
                     default='person',
                     help='Tracking person or person/vehicle jointly')
 parser.add_argument("--dump-video", type=bool, default=False,
@@ -19,7 +19,6 @@ parser.add_argument("--dump-video", type=bool, default=False,
 parser.add_argument("--vis-resolution", type=int, default=1080)
 parser.add_argument("--output-path", type=str, default=None,
                     help='The path of dumped videos')
-
 
 if __name__ == '__main__':
     args = parser.parse_args()
@@ -46,5 +45,3 @@ if __name__ == '__main__':
 
     if args.dump_video:
         vis_writer.close_video_writer()
-
-

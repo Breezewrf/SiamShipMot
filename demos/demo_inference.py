@@ -69,8 +69,8 @@ class DemoInference:
             model_name = 'DLA34_emm_coco_voc.pth'
         model_path = os.path.join(model_dir, self.track_class, model_name)
         """
-        model_path = "/home/shared/wrf/siam-mot/DLA-34-FPN_box_EMM_smd_train_smd_val_smd_demo/model_final.pth"
-        cfg_file = "/home/shared/wrf/siam-mot/configs/dla/DLA_34_FPN_EMM_MOT17.yaml"
+        model_path = "/home/breeze/Desktop/siam-mot-main/DLA-34-FPN_box_EMM_smd_train_smd_val_smd_demo/model_final.pth"
+        cfg_file = "/home/breeze/Desktop/siam-mot-main/configs/dla/DLA_34_FPN_EMM_MOT17.yaml"
         return cfg_file, model_path
 
     def _preprocess(self, frame):
