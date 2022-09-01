@@ -1,0 +1,10 @@
+train:
+CUDA_VISIBLE_DEVICES=0 python3 -m torch.distributed.launch --nproc_per_node=1 tools/train_net.py --config-file ./configs/dla/DLA_34_FPN_EMM_MOT17.yaml --model-suffix smd_demo
+
+test:
+CUDA_VISIBLE_DEVICES=0 python3 tools/test_net.py --config-file configs/dla/DLA_34_FPN_EMM_MOT17.yaml --output-dir /home/shared/wrf/siam-mot/Outputs --model-file /home/shared/wrf/siam-mot/DLA-34-FPN_box_EMM_smd_train_smd_val_smd_demo/model_final.pth --test-dataset smd_val
+
+train_7.26_scripts:
+cd /home/shared/wrf/siam-mot
+source ./siam-mot-Env/bin/activate
+CUDA_VISIBLE_DEVICES=0 python3 -m torch.distributed.launch --nproc_per_node=1 tools/train_net.py --config-file ./configs/dla/DLA_34_FPN_EMM_MOT17.yaml --model-suffix smd_demo_fp2n_tanh_init_1x1_nearest
